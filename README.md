@@ -15,9 +15,17 @@ thrust install jwt
 
 ```javascript
 let jwt = require('jwt')
+
+let token = jwt.serialize({
+  nome: 'Bruno',
+  role: 'Admin
+}, true)
+
+show(token)
+
 ```
 
-O modulo jwt conterá os seguintes métodos
+## API
 
 ```javascript
 /**
@@ -61,3 +69,5 @@ Exemplo:
     }
 }
 ```
+
+Este módulo é usado juntamente com o *bitcode* [thrust-bitcodes/authentication](https://github.com/thrust-bitcodes/authentication).
