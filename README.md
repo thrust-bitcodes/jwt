@@ -3,10 +3,18 @@ JWT
 
 JWT é um *bitcode* de serialização/deserialização de JSON Web Token para [ThrustJS](https://github.com/thrustjs/thrust)
 
+# Instalação
+
+Posicionado em um app [ThrustJS](https://github.com/thrustjs/thrust), no seu terminal:
+
+```bash
+thrust install jwt
+```
+
 ## Tutorial
 
 ```javascript
-var jwt = require('thrust-bitcodes/jwt')
+let jwt = require('jwt')
 ```
 
 O modulo jwt conterá os seguintes métodos
