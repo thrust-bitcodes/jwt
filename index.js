@@ -17,8 +17,6 @@ var AlgorithmConstraints = Java.type('org.jose4j.jwa.AlgorithmConstraints')
 /** @ignore */
 var ConstraintType = Java.type('org.jose4j.jwa.AlgorithmConstraints.ConstraintType')
 
-var jwtConfig = getBitcodeConfig('jwt')
-
 var jwt = {
   /**
    * Função que gera um **jwt** a partir de um *payload*.
@@ -76,6 +74,14 @@ function deserializeEncryptedToken (encryptJWT) {
   jwe.setKey(key)
   jwe.setCompactSerialization(encryptJWT)
   return jwe.getPayload()
+}
+
+function jwtConfig(name) {
+  try {
+    return env('jwt.' + name)
+  } catch(e) {
+    return getBitcodeConfig('jwt')(name);
+  }
 }
 
 function getKey() {
