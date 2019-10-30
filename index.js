@@ -17,28 +17,6 @@ var AlgorithmConstraints = Java.type('org.jose4j.jwa.AlgorithmConstraints')
 /** @ignore */
 var ConstraintType = Java.type('org.jose4j.jwa.AlgorithmConstraints.ConstraintType')
 
-function getBitcodeConfig(bitcode) {
-    const config = getConfig()
-
-    return (property, appId) => {
-        const propertyPath = property ? property.split('.') : []
-
-        let result = propertyPath.reduce((map, currProp) => {
-            if (map && map[currProp]) {
-                return map[currProp]
-            } else {
-                return undefined
-            }
-        }, config)
-
-        if (appId && typeof result === 'object' && result[appId]) {
-            result = result[appId]
-        }
-
-        return result
-    }
-}
-
 var jwt = {
     /**
     * Função que gera um **jwt** a partir de um *payload*.
@@ -112,7 +90,8 @@ function jwtConfig (name) {
     try {
         return env('jwt.' + name)
     } catch (e) {
-        return getBitcodeConfig('jwt')(name)
+        var cfg = getConfig()
+        return cfg && cfg.jwt && cfg.jwt[name]
     }
 }
 
