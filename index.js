@@ -122,6 +122,10 @@ function getKey () {
 }
 
 function getEncryptionKey () {
+    var key  = jwtConfig('jwsKey')
+    if (!key) {
+        throw new Error('No jwsKey from config for JWT')
+    }
     return new AesKey(getBytes(jwtConfig('jwsKey')))
 }
 
