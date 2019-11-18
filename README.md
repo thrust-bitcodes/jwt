@@ -1,14 +1,13 @@
-JWT
-===============
+# JWT 0.1.4
 
 JWT é um *bitcode* de serialização/deserialização de JSON Web Token para [ThrustJS](https://github.com/thrustjs/thrust)
 
-# Instalação
+## Instalação
 
 Posicionado em um app [ThrustJS](https://github.com/thrustjs/thrust), no seu terminal:
 
-```bash
-thrust install jwt
+```sh
+tpm install ozaijr/jwt
 ```
 
 ## Tutorial
@@ -46,6 +45,7 @@ deserialize(serializedJwt, encrypted)
 ```
 
 ## Parâmetros de configuração
+
 As propriedades abaixo devem ser configuradas no arquivo *config.json* (distribuído juntamente com o ThrustJS):
 
 ``` javascript
