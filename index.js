@@ -22,7 +22,7 @@ var ByteArrayOutputStream = Java.type('java.io.ByteArrayOutputStream')
 var OutputStreamWriter = Java.type('java.io.OutputStreamWriter')
 
 var jwt = {
-    version: '0.0.7',
+    version: '0.1.4',
     /**
     * Função que gera um **jwt** a partir de um *payload*.
     * @param {Object} payload - propriedades que serão inseridas no payload do jwt.
