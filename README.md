@@ -1,4 +1,4 @@
-# JWT
+# JWT 0.0.7
 
 JWT é um *bitcode* de serialização/deserialização de JSON Web Token para [ThrustJS](https://github.com/thrustjs/thrust)
 
