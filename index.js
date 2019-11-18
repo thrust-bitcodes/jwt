@@ -17,6 +17,10 @@ var AlgorithmConstraints = Java.type('org.jose4j.jwa.AlgorithmConstraints')
 /** @ignore */
 var ConstraintType = Java.type('org.jose4j.jwa.AlgorithmConstraints.ConstraintType')
 
+var BufferedWriter = Java.type('java.io.BufferedWriter')
+var ByteArrayOutputStream = Java.type('java.io.ByteArrayOutputStream')
+var OutputStreamWriter = Java.type('java.io.OutputStreamWriter')
+
 var jwt = {
     /**
     * Função que gera um **jwt** a partir de um *payload*.
@@ -42,8 +46,14 @@ function getBytes (str, charset) {
     str = str || ''
     charset = charset || 'utf-8'
     if (!str.getBytes) {
-        let StringHelper = Java.type('br.com.softbox.thrust.api.ThrustStringHelper')
-        return StringHelper.getBytes(str, charset)
+        var bos = new ByteArrayOutputStream()
+        var out = new BufferedWriter(new OutputStreamWriter(bos, charset))
+        out.append(str)
+        out.flush()
+        var strBytes = bos.toByteArray()
+        out.close()
+
+        return strBytes
     }
     return str.getBytes(charset)
 }
@@ -101,7 +111,7 @@ function getKey () {
 }
 
 function getEncryptionKey () {
-    var key  = jwtConfig('jwsKey')
+    var key = jwtConfig('jwsKey')
     if (!key) {
         throw new Error('No jwsKey from config for JWT')
     }
